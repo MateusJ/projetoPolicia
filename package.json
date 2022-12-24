@@ -1,0 +1,89 @@
+{
+  "name": "proj-integrador-i",
+  "version": "0.1.0",
+  "author": "Universidade Federal de Santa Catarina - Curso de Eng. de Computacao",
+  "description": "Dashboard para visualização de dados destinada à Polícia Militar de Araranguá",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "electron-is-dev": "^2.0.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "react-tooltip": "^4.5.1",
+    "recharts": "^2.1.14",
+    "styled-components": "^5.3.5",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "concurrently -k \"npm run dev\" \"npm run electron\"",
+    "dev": "react-app-rewired start",
+    "electron": "wait-on http://localhost:3000 && npx electron .",
+    "pack": "electron-builder --dir",
+    "react-build": "react-app-rewired build",
+    "dist-yarn": "yarn react-build && npx electron-builder",
+    "dist": "npm run react-build && npx electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0",
+    "cross-env": "^7.0.3",
+    "electron": "^21.2.2",
+    "electron-builder": "^23.6.0",
+    "react-app-rewired": "^2.2.1",
+    "wait-on": "^6.0.1"
+  },
+  "build": {
+    "appId": "dashboard",
+    "files": [
+      "build/**/*",
+      "electron/*",
+      "src/utils/readFile.js",
+      "src/utils/writeFile.js",
+      "src/utils/generateReports.js",
+      "src/constants/channels.js"
+    ],
+    "extraMetadata": {
+      "main": "build/electron.js"
+    },
+    "mac": {
+      "category": "CRM"
+    },
+    "win": {
+      "target": "nsis-web"
+    },
+    "nsisWeb": {
+      "displayLanguageSelector": true,
+      "runAfterFinish": true,
+      "artifactName": "Dashboard-Setup${version}.${ext}",
+      "oneClick": false
+    }
+  }
+}
