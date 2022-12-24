@@ -1,3 +1,7 @@
+# Projeto Policia
+Este projeto foi feito durante a disciplina de projeto integrador 1 no curso de Engenharia de Computação na UFSC araranguá
+Participantes: Eduardo Cristaldo, Gabriel Feltes, Manoella Rockembach, Mateus Joaquim Machado e Pedro Olavo
+
 # Getting Started
 ### `npm install`
 
